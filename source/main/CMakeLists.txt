@@ -65,6 +65,11 @@ macro(add_ror_project BINNAME folder useWxWidgets)
     add_definitions("-DFEAT_TIMING")
   endif(ROR_FEAT_TIMING)
  
+  if(ROR_USE_CAELUM)
+    add_definitions("-DCAELUM_TYPE_DESCRIPTORS")
+    add_definitions("-DCAELUM_SCRIPT_SUPPORT")
+    add_definitions("-DOGRE_USE_NEW_COMPILERS")
+  endif(ROR_USE_CAELUM)
 
   #add_definitions("-DFEAT_DEBUG_MUTEX")
 
@@ -135,7 +140,7 @@ macro(add_ror_project BINNAME folder useWxWidgets)
   ENDIF(WIN32)
 
   target_link_libraries(${BINNAME}
-		${Boost_LIBRARIES} ${Ogre_LIBRARIES} ${Ogre_Terrain_LIBRARIES} ${Ogre_Paging_LIBRARIES} ${Ogre_RTShader_LIBRARIES} ${Ois_LIBRARIES} ${OS_LIBS} ${optional_libs}
+		${Boost_LIBRARIES} ${Boost_SYSTEM_LIBRARY} ${Ogre_LIBRARIES} ${Ogre_Terrain_LIBRARIES} ${Ogre_Overlay_LIBRARIES} ${Ogre_Paging_LIBRARIES} ${Ogre_RTShader_LIBRARIES} ${Ois_LIBRARIES} ${OS_LIBS} ${optional_libs}
 	)
 	
 if(WIN32)

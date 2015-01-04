@@ -467,7 +467,8 @@ void CDebugger::PrintValue(const std::string &expr, asIScriptContext *ctx)
 				for( asUINT n = 0; n < mod->GetGlobalVarCount(); n++ )
 				{
 					const char *varName = 0;
-					mod->GetGlobalVar(n, &varName, &typeId);
+					const char *varNameSpace = 0;
+					mod->GetGlobalVar(n, &varName, &varNameSpace, &typeId);
 					if( name == varName )
 					{
 						ptr = mod->GetAddressOfGlobalVar(n);
@@ -542,7 +543,7 @@ void CDebugger::ListGlobalVariables(asIScriptContext *ctx)
 	for( asUINT n = 0; n < mod->GetGlobalVarCount(); n++ )
 	{
 		int typeId;
-		mod->GetGlobalVar(n, 0, &typeId);
+		mod->GetGlobalVar(n, 0, 0, &typeId);
 		s << mod->GetGlobalVarDeclaration(n) << " = " << ToString(mod->GetAddressOfGlobalVar(n), typeId, false, ctx->GetEngine()) << endl;
 	}
 	Output(s.str());

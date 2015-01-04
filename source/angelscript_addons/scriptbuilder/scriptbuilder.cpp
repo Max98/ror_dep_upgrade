@@ -433,7 +433,7 @@ int CScriptBuilder::Build()
 		else if( decl->type == 2 )
 		{
 			// Find the function id
-			int funcId = module->GetFunctionIdByDecl(decl->declaration.c_str());
+			int funcId = module->GetFunctionByDecl(decl->declaration.c_str())->GetTypeId();
 			if( funcId >= 0 )
 				funcMetadataMap.insert(map<int, string>::value_type(funcId, decl->metadata));
 		}
