@@ -29,6 +29,8 @@ macro(add_ror_project BINNAME folder useWxWidgets)
   
   include_directories(${Ogre_Terrain_INCLUDE_DIRS})
   link_directories   (${Ogre_Terrain_LIBRARY_DIRS})
+  include_directories(${Ogre_Overlay_INCLUDE_DIRS})
+  link_directories   (${Ogre_Overlay_LIBRARY_DIRS})
   include_directories(${Ogre_Paging_INCLUDE_DIRS})
   link_directories   (${Ogre_Paging_LIBRARY_DIRS})
   include_directories(${Ogre_RTShader_INCLUDE_DIRS})
