@@ -28,7 +28,7 @@ int CompareRelation(asIScriptEngine *engine, void *lobj, void *robj, int typeId,
 				func->GetParamCount() == 1 )
 			{
 				asDWORD flags;
-				int paramTypeId = func->GetParamTypeId(0, &flags);
+				int paramTypeId = func->GetParam(0, &typeId, &flags);
 				
 				// The parameter must be an input reference of the same type
 				if( flags != asTM_INREF || typeId != paramTypeId )
@@ -82,7 +82,7 @@ int CompareEquality(asIScriptEngine *engine, void *lobj, void *robj, int typeId,
 				func->GetParamCount() == 1 )
 			{
 				asDWORD flags;
-				int paramTypeId = func->GetParamTypeId(0, &flags);
+				int paramTypeId = func->GetParam(0, &typeId, &flags);
 				
 				// The parameter must be an input reference of the same type
 				if( flags != asTM_INREF || typeId != paramTypeId )

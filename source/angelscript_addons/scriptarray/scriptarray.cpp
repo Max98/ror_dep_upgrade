@@ -77,7 +77,6 @@ static bool ScriptArrayTemplateCallback(asIObjectType *ot)
 				asIScriptFunction *func = subtype->GetBehaviourByIndex(n, &beh);
 				if( beh != asBEHAVE_CONSTRUCT ) continue;
 
-				asIScriptFunction *func = ot->GetEngine()->GetFunctionById(funcId);
 				if( func->GetParamCount() == 0 )
 				{
 					// Found the default constructor
@@ -944,8 +943,8 @@ void CScriptArray::Precache()
 				{
 					asDWORD flags = 0;
 					int returnTypeId = func->GetReturnTypeId();
-					int paramTypeId = func->GetParamTypeId(0, &flags);
-				
+					int paramTypeId = func->GetParam(0, &returnTypeId, &flags);
+
 					if( flags == asTM_INREF && paramTypeId == subTypeId )
 					{
 						if( returnTypeId == asTYPEID_INT32 && strcmp(func->GetName(), "opCmp") == 0 )
