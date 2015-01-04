@@ -40,6 +40,8 @@
 #include "IHeightFinder.h"
 #include "Language.h"
 #include "OgreFontManager.h"
+#include "OgreOverlay.h"
+#include "OgreOverlayManager.h"
 #include "OgreSubsystem.h"
 #include "RoRVersion.h"
 #include "Screwprop.h"

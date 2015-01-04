@@ -28,7 +28,7 @@ using namespace Ogre;
 
 DustPool::DustPool(const char* dname, int dsize) : 
 	  allocated(0)
-	, size(std::min(dsize, MAX_DUSTS))
+	, size(std::min(dsize, static_cast<int>(MAX_DUSTS)))
 {
 	for (int i=0; i<size; i++)
 	{

@@ -32,6 +32,7 @@ along with Rigs of Rods.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "OgreShaderParticleRenderer.h"
 #include "OgreBoxEmitterFactory.h"
+#include "OgreOverlayManager.h"
 
 #ifdef USE_ANGELSCRIPT
 #include "FireExtinguisherAffectorFactory.h"

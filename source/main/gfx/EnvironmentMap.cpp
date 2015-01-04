@@ -21,6 +21,8 @@ along with Rigs of Rods.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Beam.h"
 #include "Ogre.h"
+#include "OgreOverlay.h"
+#include "OgreOverlayManager.h"
 #include "Settings.h"
 #include "SkyManager.h"
 #include "TerrainManager.h"

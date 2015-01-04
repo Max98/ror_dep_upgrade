@@ -59,7 +59,7 @@ namespace Ogre {
 
         // Generate complex data by reference
         genEmissionColour(pParticle->colour);
-        genEmissionDirection(pParticle->direction);
+		genEmissionDirection(Vector3::ZERO, pParticle->direction);
         genEmissionVelocity(pParticle->direction);
 
         // Generate simpler data

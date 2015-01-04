@@ -31,7 +31,7 @@ namespace Hydrax
 	Mesh::Mesh(Hydrax *h)
             : mHydrax(h)
 			, mCreated(false)
-            , mMesh(0)
+            , mMesh()
             , mSubMesh(0)
             , mEntity(0)
             , mNumFaces(0)

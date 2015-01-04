@@ -66,6 +66,8 @@ along with Rigs of Rods.  If not, see <http://www.gnu.org/licenses/>.
 #include "TurboJet.h"
 #include "TurboProp.h"
 #include "Water.h"
+#include "OgreOverlayElement.h"
+#include "OgreOverlayManager.h"
 
 #include "RigDef_Parser.h"
 #include "RigDef_Validator.h"
@@ -298,7 +300,7 @@ Beam::~Beam()
 		netMT = 0;
 	}
 
-	if (net_mutex)
+	if (networked)
 	{
 		pthread_mutex_destroy(&net_mutex);
 	}
@@ -6091,6 +6093,7 @@ Beam::Beam(
 	, netMT(0)
 	, netReverseLight(false)
 	, networkAuthlevel(0)
+	, networked(networked)
 	, networkUsername("")
 	, oldreplaypos(-1)
 	, parkingbrake(0)

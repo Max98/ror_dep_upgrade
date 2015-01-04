@@ -541,6 +541,8 @@ protected:
 
 	void SyncReset(); //this one should be called only synchronously (without physics running in background)
 
+	bool networked;
+
 	float dtperstep;
 	int curtstep;
 	int tsteps;

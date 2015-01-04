@@ -32,6 +32,8 @@ along with Rigs of Rods.  If not, see <http://www.gnu.org/licenses/>.
 #include "Settings.h"
 
 #include <Ogre.h>
+#include <OgreOverlay.h>
+#include <OgreOverlayManager.h>
 
 using namespace Ogre;
 
