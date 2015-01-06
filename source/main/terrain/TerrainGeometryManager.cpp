@@ -384,32 +384,46 @@ void TerrainGeometryManager::initBlendMaps(int x, int z, Ogre::Terrain* terrain 
 		}
 
 		TerrainLayerBlendMap *blendmap = terrain->getLayerBlendMap(i);
-
-		// resize that blending map so it will fit
-		Ogre::uint32 blendmapSize = terrain->getLayerBlendMapSize();
-		if (img.getWidth() != blendmapSize)
-			img.resize(blendmapSize, blendmapSize);
-
-		// now to the ugly part
-		float* ptr = blendmap->getBlendPointer();
-		for (Ogre::uint32 z = 0; z != blendmapSize; z++)
+		if (blendmap)
 		{
-			for (Ogre::uint32 x = 0; x != blendmapSize; x++)
+			// resize that blending map so it will fit
+			Ogre::uint32 blendmapSize = terrain->getLayerBlendMapSize();
+			if (img.getWidth() != blendmapSize)
+				img.resize(blendmapSize, blendmapSize);
+
+			// now to the ugly part
+			try
 			{
-				Ogre::ColourValue c = img.getColourAt(x, z, 0);
-				float alpha = bi.alpha;
-				if      (bi.blendMode == 'R')
-					*ptr++ = c.r * alpha;
-				else if (bi.blendMode == 'G')
-					*ptr++ = c.g * alpha;
-				else if (bi.blendMode == 'B')
-					*ptr++ = c.b * alpha;
-				else if (bi.blendMode == 'A')
-					*ptr++ = c.a * alpha;
+				float* pBlendMap = blendmap->getBlendPointer(); //Ogre 1.9 CRASH HERE
+				if (pBlendMap)
+				{
+					for (Ogre::uint32 z = 0; z != blendmapSize; z++)
+					{
+						for (Ogre::uint32 x = 0; x != blendmapSize; x++)
+						{
+							Ogre::ColourValue c = img.getColourAt(x, z, 0);
+							float alpha = bi.alpha;
+							if (bi.blendMode == 'R')
+								*pBlendMap++ = c.r * alpha;
+							else if (bi.blendMode == 'G')
+								*pBlendMap++ = c.g * alpha;
+							else if (bi.blendMode == 'B')
+								*pBlendMap++ = c.b * alpha;
+							else if (bi.blendMode == 'A')
+								*pBlendMap++ = c.a * alpha;
+						}
+					}
+				}
+				blendmap->dirty();
+				blendmap->update();
+			}
+			catch (Exception &e)
+			{
+				LOG("Error applying Blendmap: " + e.getFullDescription());
+				continue;
 			}
 		}
-		blendmap->dirty();
-		blendmap->update();
+		blendmap = nullptr;
 	}
 
 	if (debugBlendMaps)
