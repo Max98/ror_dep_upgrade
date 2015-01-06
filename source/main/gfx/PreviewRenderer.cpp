@@ -29,6 +29,9 @@ along with Rigs of Rods.  If not, see <http://www.gnu.org/licenses/>.
 #include "Application.h"
 #include "OgreSubsystem.h"
 
+#include "Ogre.h"
+#include "OgreBuildSettings.h"
+
 using namespace Ogre;
 
 PreviewRenderer::PreviewRenderer()
